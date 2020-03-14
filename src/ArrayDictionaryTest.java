@@ -21,7 +21,40 @@ public class ArrayDictionaryTest {
 
     @Test
     public void contains() {
-        // homework
-        assertTrue(false);  // place holder
+        int[][] setKeys = {
+                {-1, 0, 1},
+                {2,0},
+                {0,1,2,3},
+                {3,1},
+                {1,4,7,8}
+        };
+
+        int[][] testSets = {
+                {0,103},
+                {1,105},
+                {2,206},
+                {4,407}
+        };
+
+        boolean[][] expected = {
+                {false,false,false},
+                {false,true},
+                {true,true,false,false},
+                {false,true},
+                {true,true,false,false}
+        };
+
+        for (int i = 0; i < 5; i++) {
+            ArrayDictionary testDictionary = new ArrayDictionary(i);
+
+            for (int j = 0; j < i; j++) {
+                testDictionary.add(testSets[j][0], testSets[j][1]);
+            }
+
+            for (int j = 0; j < setKeys[i].length; j++) {
+                boolean actual = testDictionary.contains(setKeys[i][j]);
+                assertEquals(expected[i][j], actual);
+            }
+        }
     }
 }

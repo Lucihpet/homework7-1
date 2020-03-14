@@ -65,7 +65,18 @@ public class ArrayDictionary implements Dictionary {
     // with the key
     @Override
     public boolean contains(int key) {
-        // homework
+        if (this.capacity == 0)
+            return false;
+
+        for (int i = 0; i < this.capacity; i++) {
+            KVEntry ptr = entries[i];
+            while (ptr != null) {
+                    if (ptr.key == key)
+                        return true;
+                    ptr = ptr.next;
+            }
+        }
+
         return false;
     }
 
