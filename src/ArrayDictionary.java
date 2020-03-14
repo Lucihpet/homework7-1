@@ -57,7 +57,11 @@ public class ArrayDictionary implements Dictionary {
     // Return true if an entry is deleted, false otherwise
     @Override
     public boolean remove(int key) {
-        // homework
+        if (!this.contains(key))
+            return false;
+
+        
+
         return false;
     }
 
@@ -70,9 +74,11 @@ public class ArrayDictionary implements Dictionary {
 
         for (int i = 0; i < this.capacity; i++) {
             KVEntry ptr = entries[i];
+
             while (ptr != null) {
                     if (ptr.key == key)
                         return true;
+
                     ptr = ptr.next;
             }
         }

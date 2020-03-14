@@ -21,6 +21,8 @@ public class ArrayDictionaryTest {
 
     @Test
     public void contains() {
+        int[] capacity = {0,1,2,3,3};
+
         int[][] setKeys = {
                 {-1, 0, 1},
                 {2,0},
@@ -45,7 +47,7 @@ public class ArrayDictionaryTest {
         };
 
         for (int i = 0; i < 5; i++) {
-            ArrayDictionary testDictionary = new ArrayDictionary(i);
+            ArrayDictionary testDictionary = new ArrayDictionary(capacity[i]);
 
             for (int j = 0; j < i; j++) {
                 testDictionary.add(testSets[j][0], testSets[j][1]);
