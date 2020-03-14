@@ -60,7 +60,24 @@ public class ArrayDictionary implements Dictionary {
         if (!this.contains(key))
             return false;
 
-        
+        for (int i = 0; i < this.capacity; i++) {
+            KVEntry ptr1 = entries[i];
+            KVEntry ptr2 = null;
+
+            while (ptr1 != null) {
+                if (ptr1.key == key) {
+                    if (ptr2 == null)
+                        entries[i] = ptr1.next;
+                    else
+                        ptr2.next = ptr1.next;
+
+                    return true;
+                }
+
+                ptr2 = ptr1;
+                ptr1 = ptr1.next;
+            }
+        }
 
         return false;
     }

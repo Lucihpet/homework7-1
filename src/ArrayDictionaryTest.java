@@ -15,8 +15,45 @@ public class ArrayDictionaryTest {
 
     @Test
     public void remove() {
-        // homework
-        assertTrue(false);  // place holder
+        int[] setKeys = {0,1,2,4,1,5};
+
+        int[][] testSetsNC = {
+                {0,103},
+                {1,105}
+        };
+
+        int[][] testSetsWC = {
+                {0,103},
+                {1,105},
+                {4,407}
+        };
+
+        boolean[] expected = {false,true,false,true,true,false};
+
+        ArrayDictionary empty = new ArrayDictionary(0);
+
+        ArrayDictionary noCollision = new ArrayDictionary(2);
+        for (int i = 0; i < testSetsNC.length; i++) {
+            noCollision.add(testSetsNC[i][0],testSetsNC[i][1]);
+        }
+
+        ArrayDictionary collision = new ArrayDictionary(2);
+        for (int i = 0; i < testSetsWC.length; i++) {
+            collision.add(testSetsWC[i][0],testSetsWC[i][1]);
+        }
+
+        for (int i = 0; i < 6; i++) {
+            boolean actual;
+            if (i == 0)
+                actual = empty.remove(setKeys[i]);
+            else if (i == 1 || i == 2)
+                actual = noCollision.remove(setKeys[i]);
+            else
+                actual = collision.remove(setKeys[i]);
+
+            assertEquals(expected[i],actual);
+        }
+
     }
 
     @Test
